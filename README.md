@@ -1,0 +1,1 @@
+This program automatically notifies you of sites that offer medical articles.
