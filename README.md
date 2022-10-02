@@ -1,1 +1,1 @@
-This program automatically notifies you of sites that offer medical articles.
+The program automatically notifies sites offering medical articles to your LINE account.
