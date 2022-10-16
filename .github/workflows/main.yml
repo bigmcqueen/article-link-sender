@@ -25,11 +25,8 @@ jobs:
           python-version: 3.9
       - name: Install dependencies
         run: |
-          # pip更新
           python -m pip install --upgrade pip
-          # 必要なパッケージインストール
           pip install beautifulsoup4 line-bot-sdk requests
       - name: Run script
         run: |
-          # main.pyの実行
           python main.py
