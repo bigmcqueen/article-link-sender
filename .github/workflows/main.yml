@@ -6,8 +6,9 @@ name: get_today_paperWatch
   # 曜日指定には [0, 6] の整数を使う。 0 が日曜日、 6 が土曜日。
   # github actionsのcronの時刻はUTCなので、日本時間に合わせるために日本時刻から9時間マイナスで設定する必要がある。
 on:
-  schedule:
-    - cron: '0 2 * * *'
+# 日本時間11:00に発火させる
+#   schedule:
+#     - cron: '0 2 * * *'
 
 jobs:
   build:
