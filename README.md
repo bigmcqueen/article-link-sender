@@ -3,5 +3,5 @@
 The site this program uses: https://aasj.jp/watch.html
 ## Technology used
 - Python
-- Messeagig API
+- Messeaging API
 - GitHub Actions
