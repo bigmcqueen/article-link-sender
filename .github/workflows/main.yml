@@ -1,0 +1,34 @@
+name: get_today_paperWatch
+
+# 発火タイミング
+  # 日本時刻の朝7時に定期処理(分 時 日 月 曜日)
+  # UTC の 02:00 は JST だと 11:00 。
+  # 曜日指定には [0, 6] の整数を使う。 0 が日曜日、 6 が土曜日。
+  # github actionsのcronの時刻はUTCなので、日本時間に合わせるために日本時刻から9時間マイナスで設定する必要がある。
+on:
+  schedule:
+    - cron: '0 2 * * *'
+
+jobs:
+  build:
+    # Ubuntuの18.04環境内で処理を実行することを指定
+    runs-on: ubuntu:18.04
+
+    # 実行する処理＆コマンド指定
+    steps:
+      # リポジトリからチェックアウトして以下の処理を実行していく
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.9
+      - name: Install dependencies
+        run: |
+          # pip更新
+          python -m pip install --upgrade pip
+          # 必要なパッケージインストール
+          pip install beautifulsoup4 line-bot-sdk requests
+      - name: Run script
+        run: |
+          # main.pyの実行
+          python main.py
