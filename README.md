@@ -3,6 +3,7 @@
 The site this program uses: https://aasj.jp/watch.html
 ## Technology used
 - Python
+- Web scraping
 - Messeaging API
 - GitHub Actions
 
