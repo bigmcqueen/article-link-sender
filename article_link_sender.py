@@ -8,7 +8,7 @@ from linebot import LineBotApi
 from linebot.models import TextSendMessage
 
 
-class PaperLinkSender(object):
+class ArticleLinkSender(object):
 
     def __init__(self, info_path: str):
         # ラインボットに必要な情報を読み込む
@@ -46,7 +46,7 @@ class PaperLinkSender(object):
 
 
 def main():
-    sender = PaperLinkSender('info.json')
+    sender = ArticleLinkSender('info.json')
     contents = sender.extract_article_info()
     sender.send_messages(contents)
 
