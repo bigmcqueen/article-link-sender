@@ -18,14 +18,21 @@ class ArticleLinkSender(object):
         self.line_bot_api = LineBotApi(info['channel_access_token'])
 
 
-    def load_info(self, file_path: str):
-        with open(file_path) as f:
-            return json.load(f)
-
-
     def send_messages(self, contents: str):
         messages = TextSendMessage(text=contents)
         self.line_bot_api.push_message(self.user_id, messages=messages)
+
+
+    @staticmethod
+    def load_info(file_path: str):
+        with open(file_path) as f:
+            info = json.load(f)
+
+        for iv in info.values():
+            if len(iv) == 0:
+                raise ValueError('必要な情報がありません')
+
+        return info
 
 
     @staticmethod
@@ -39,7 +46,7 @@ class ArticleLinkSender(object):
         title = soup.find('h2').get_text()
 
         if (title is None) | (len(title) == 5):
-            return '記事を取得できませんでした。'
+            return '記事を取得できませんでした'
 
         else:
             return title + '\n' + url
