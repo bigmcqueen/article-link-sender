@@ -46,7 +46,8 @@ class ArticleLinkSender(object):
 
 
 def main():
-    sender = ArticleLinkSender('info.json')
+    info_path = './info.json'
+    sender = ArticleLinkSender(info_path)
     contents = sender.extract_article_info()
     sender.send_messages(contents)
 
