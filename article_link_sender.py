@@ -8,6 +8,9 @@ from linebot import LineBotApi
 from linebot.models import TextSendMessage
 
 
+INFO_PATH = './info.json'
+
+
 class ArticleLinkSender(object):
 
     def __init__(self, info_path: str):
@@ -17,11 +20,9 @@ class ArticleLinkSender(object):
         self.user_id = info['user_id']
         self.line_bot_api = LineBotApi(info['channel_access_token'])
 
-
     def send_messages(self, contents: str):
         messages = TextSendMessage(text=contents)
         self.line_bot_api.push_message(self.user_id, messages=messages)
-
 
     @staticmethod
     def load_info(file_path: str):
@@ -53,8 +54,7 @@ class ArticleLinkSender(object):
 
 
 def main():
-    info_path = './info.json'
-    sender = ArticleLinkSender(info_path)
+    sender = ArticleLinkSender(INFO_PATH)
     contents = sender.extract_article_info()
     sender.send_messages(contents)
 
